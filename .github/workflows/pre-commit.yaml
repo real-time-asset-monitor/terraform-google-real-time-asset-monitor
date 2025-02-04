@@ -11,7 +11,7 @@ permissions:
   id-token: write
   pull-requests: write
 
-obs:
+jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
