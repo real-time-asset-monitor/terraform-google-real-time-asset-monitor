@@ -666,4 +666,3 @@ resource "google_monitoring_dashboard" "ram_availability_dashboard" {
 }
 EOF
 }
-

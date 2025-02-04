@@ -1,4 +1,4 @@
-test_project_id  = "<yourQAProject>"
+test_project_id = "<yourQAProject>"
 prod_project_id = "<yourPrdProject>"
 feed_iam_policy_orgs = {
   yourFirstOrgID = [

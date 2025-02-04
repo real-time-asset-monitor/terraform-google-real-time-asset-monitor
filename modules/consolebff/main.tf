@@ -76,50 +76,50 @@ resource "google_cloud_run_v2_service" "crun_svc" {
   project  = var.project_id
   name     = local.service_name
   location = var.crun_region
-  client = "terraform"
-  ingress = "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
+  client   = "terraform"
+  ingress  = "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
   traffic {
-    type = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+    type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
     percent = 100
   }
   template {
     containers {
-        image = "${var.ram_container_images_registry}/${local.service_name}:${var.ram_microservice_image_tag}"
-        resources {
-          cpu_idle = true
-          limits = {
-            cpu    = "${var.crun_cpu}"
-            memory = "${var.crun_memory}"
-          }
+      image = "${var.ram_container_images_registry}/${local.service_name}:${var.ram_microservice_image_tag}"
+      resources {
+        cpu_idle = true
+        limits = {
+          cpu    = "${var.crun_cpu}"
+          memory = "${var.crun_memory}"
         }
-        env {
-          name  = "${upper(local.service_name)}_ENVIRONMENT"
-          value = var.environment
-        }
-        env {
-          name  = "${upper(local.service_name)}_LOG_ONLY_SEVERITY_LEVELS"
-          value = var.log_only_severity_levels
-        }
-        env {
-          name  = "${upper(local.service_name)}_PROJECT_ID"
-          value = var.project_id
-        }
-        env {
-          name  = "${upper(local.service_name)}_START_PROFILER"
-          value = var.start_profiler
-        }
-        env {
-          name  = "${upper(local.service_name)}_AUDIENCE_ADMIN"
-          value = var.audience_admin
-        }
-        env {
-          name  = "${upper(local.service_name)}_AUDIENCE_RESULTS"
-          value = var.audience_results
-        }
+      }
+      env {
+        name  = "${upper(local.service_name)}_ENVIRONMENT"
+        value = var.environment
+      }
+      env {
+        name  = "${upper(local.service_name)}_LOG_ONLY_SEVERITY_LEVELS"
+        value = var.log_only_severity_levels
+      }
+      env {
+        name  = "${upper(local.service_name)}_PROJECT_ID"
+        value = var.project_id
+      }
+      env {
+        name  = "${upper(local.service_name)}_START_PROFILER"
+        value = var.start_profiler
+      }
+      env {
+        name  = "${upper(local.service_name)}_AUDIENCE_ADMIN"
+        value = var.audience_admin
+      }
+      env {
+        name  = "${upper(local.service_name)}_AUDIENCE_RESULTS"
+        value = var.audience_results
+      }
     }
     max_instance_request_concurrency = var.crun_concurrency
-    timeout = var.crun_timeout
-    service_account = google_service_account.microservice_sa.email
+    timeout                          = var.crun_timeout
+    service_account                  = google_service_account.microservice_sa.email
     scaling {
       max_instance_count = var.crun_max_instances
     }

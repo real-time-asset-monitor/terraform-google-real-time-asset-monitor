@@ -40,4 +40,3 @@ output "subscription_id" {
   description = "PubSub subscription id to trigger this type of action"
   value       = google_pubsub_subscription.subcription.id
 }
-
