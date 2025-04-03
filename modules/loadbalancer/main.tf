@@ -97,6 +97,7 @@ resource "google_compute_region_network_endpoint_group" "results_neg" {
   }
 }
 
+
 resource "google_compute_backend_service" "results" {
   project = var.project_id
   name    = "results"
