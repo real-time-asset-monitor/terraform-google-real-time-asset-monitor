@@ -40,42 +40,50 @@ variable "pubsub_allowed_regions" {
 }
 
 variable "gcs_location" {
+  type    = string
   description = "Cloud Storage location"
   default     = "europe-west1"
 }
 
 variable "gcs_export_bucket_object_max_age_days" {
+  type    = number
   description = "A lifecycle rule deletes objects older than this duration"
   default     = 1
 }
 
 variable "gcs_assetjson_bucket_object_max_age_days" {
+  type    = number
   description = "A lifecycle rule deletes objects older than this duration"
   default     = 1
 }
 
 variable "crun_region" {
+  type    = string
   description = "cloud run region"
   default     = "europe-west1"
 }
 
 variable "dataset_location" {
   description = "Bigquery dataset location"
+  type        = string
   default     = "EU"
 }
 
 variable "scheduler_region" {
   description = "Cloud Scheduler region"
+  type        = string
   default     = "europe-west1"
 }
 
 variable "views_interval_days" {
   description = "The sliding windows in days the view uses to get data. Should not be less than the batch cadence to export assets"
+  type        = number
   default     = 7
 }
 
 variable "bq_partition_expiration_ms" {
   description = "Bigquery table number of milliseconds for which to keep the storage for a partition"
+  type        = number
   default     = 3024000000
 }
 
@@ -146,16 +154,19 @@ variable "asset_feed_topic_name" {
 
 variable "asset_rule_topic_name" {
   description = "each message combines the data of one asset and the code of one complicance rule's"
+  type        = string
   default     = "assetRule"
 }
 
 variable "compliance_status_topic_name" {
   description = "compliance status may be true for compliant or false for not compliant for a given asset version and configuration rule version"
+  type        = string
   default     = "ram-complianceStatus"
 }
 
 variable "violation_topic_name" {
   description = "violations detail why an asset is not compliant to a configuration rule"
+  type        = string
   default     = "ram-violation"
 }
 

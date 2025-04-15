@@ -20,27 +20,27 @@ output "project_id" {
 }
 
 output "convertfeed" {
-  value = module.convertfeed
+  value       = module.convertfeed
   description = "convertfeed module"
 }
 
 output "dashboards" {
-  value = module.dashboards
-    description = "dashboards module"
+  value       = module.dashboards
+  description = "dashboards module"
 }
 
 output "deploy" {
-  value = module.deploy
+  value       = module.deploy
   description = "deploy"
 }
 
 output "executecaiexport" {
-  value = module.executecaiexport
+  value       = module.executecaiexport
   description = "executecaiexport"
 }
 
 output "executegfsdeleteolddocs" {
-  value = module.executegfsdeleteolddocs
+  value       = module.executegfsdeleteolddocs
   description = "executegfsdeleteolddocs"
 }
 
@@ -49,22 +49,22 @@ output "executegfsdeleteolddocs" {
 # }
 
 output "fetchrules" {
-  value = module.fetchrules
+  value       = module.fetchrules
   description = "fetchrules"
 }
 
 output "launch" {
-  value = module.launch
+  value       = module.launch
   description = "launch"
 }
 
 output "metrics" {
-  value = module.metrics
+  value       = module.metrics
   description = "metrics"
 }
 
 output "monitor" {
-  value = module.monitor
+  value       = module.monitor
   description = "monitor"
 }
 
