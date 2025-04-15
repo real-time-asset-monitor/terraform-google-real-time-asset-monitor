@@ -41,11 +41,13 @@ variable "sub_ack_deadline_seconds" {
 }
 
 variable "sub_message_retention_duration" {
+  type        = string
   description = "How long to retain unacknowledged messages in the subscription's backlog,"
   default     = "86400s"
 }
 
 variable "sub_minimum_backoff" {
+  type        = string
   description = "The minimum delay between consecutive deliveries of a given message"
   default     = "20s"
 }

@@ -15,6 +15,7 @@
  */
 
 variable "project_id" {
+  type        = string
   description = "RAM GCP project id for a given environment, like dev or production"
 }
 
@@ -23,6 +24,7 @@ variable "notification_channels" {
 }
 
 variable "alerting_topic_name" {
+  type    = string
   default = "alerting"
 }
 
@@ -35,9 +37,11 @@ variable "ram_e2e_latency" {
 }
 
 variable "log_metric_ram_execution_count_id" {
+  type = number
 }
 
 variable "log_metric_ram_execution_latency_e2e_id" {
+  type = number
 }
 
 variable "ram_availability" {

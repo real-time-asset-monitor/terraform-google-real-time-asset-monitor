@@ -15,39 +15,47 @@
  */
 
 variable "project_id" {
+  type        = string
   description = "RAM GCP project id for a given environment, like dev or production"
 }
 
 variable "environment" {
+  type        = string
   description = "environment name"
 }
 
 variable "crun_region" {
+  type        = string
   description = "cloud run region"
   default     = "europe-west1"
 }
 
 variable "crun_cpu" {
+  type        = string
   description = "Number of cpu in k8s quantity 1000m means 1000 millicpu aka 1"
   default     = "1000m"
 }
 variable "crun_concurrency" {
+  type        = number
   description = "Number of requests a container could received at the same time"
   default     = 80
 }
 
 variable "crun_max_instances" {
+  type        = number
   description = "Max number of instances"
   default     = 10
 }
 
 variable "crun_memory" {
+  type        = string
   description = "Memory allocation in k8s quantity "
   default     = "128Mi"
 }
 
 
 variable "crun_timeout" {
+  type        = string
   description = "Max duration for an instance for responding to a request"
   default     = "3600s"
 }
@@ -68,26 +76,31 @@ variable "log_only_severity_levels" {
 }
 
 variable "start_profiler" {
+  type        = bool
   description = "Continuous CPU and heap profiling in Cloud Profiler"
   default     = "false"
 }
 
 variable "triggering_topic_id" {
+  type        = string
   description = "Triggering topic e.g projects/PROJECT_ID/topics/TOPIC_NAME"
 }
 
 variable "sub_ack_deadline_seconds" {
+  type        = number
   description = "The maximum time after a subscriber receives a message before the subscriber should acknowledge the message"
   default     = 600
 }
 
 variable "sub_message_retention_duration" {
+  type        = string
   description = "How long to retain unacknowledged messages in the subscription's backlog,"
   default     = "86400s"
 }
 
 # 2022-03-16 Database operation quota is 60 per MINUTE -> do not retry in less than a minute
 variable "sub_minimum_backoff" {
+  type        = string
   description = "The minimum delay between consecutive deliveries of a given message"
   default     = "65s"
 }

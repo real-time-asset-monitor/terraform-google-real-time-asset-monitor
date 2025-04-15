@@ -101,6 +101,7 @@ variable "sub_ack_deadline_seconds" {
 }
 
 variable "sub_message_retention_duration" {
+  type        = string
   description = "How long to retain unacknowledged messages in the subscription's backlog,"
   default     = "86400s"
 }
@@ -108,6 +109,7 @@ variable "sub_message_retention_duration" {
 # https://cloud.google.com/asset-inventory/docs/quota
 # 2022-02-11 ExportAsset quota is 60 per MINUTE -> do not retry in less than a minute
 variable "sub_minimum_backoff" {
+  type        = string
   description = "The minimum delay between consecutive deliveries of a given message"
   default     = "65s"
 }
