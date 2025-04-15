@@ -21,22 +21,27 @@ output "project_id" {
 
 output "convertfeed" {
   value = module.convertfeed
+  description = "convertfeed module"
 }
 
 output "dashboards" {
   value = module.dashboards
+    description = "dashboards module"
 }
 
 output "deploy" {
   value = module.deploy
+  description = "deploy"
 }
 
 output "executecaiexport" {
   value = module.executecaiexport
+  description = "executecaiexport"
 }
 
 output "executegfsdeleteolddocs" {
   value = module.executegfsdeleteolddocs
+  description = "executegfsdeleteolddocs"
 }
 
 # output "feeds" {
@@ -45,18 +50,22 @@ output "executegfsdeleteolddocs" {
 
 output "fetchrules" {
   value = module.fetchrules
+  description = "fetchrules"
 }
 
 output "launch" {
   value = module.launch
+  description = "launch"
 }
 
 output "metrics" {
   value = module.metrics
+  description = "metrics"
 }
 
 output "monitor" {
   value = module.monitor
+  description = "monitor"
 }
 
 output "publish2fs" {
