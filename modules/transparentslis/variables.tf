@@ -15,11 +15,13 @@
  */
 
 variable "project_id" {
+  type        = string
   description = "RAM GCP project id for a given environment, like dev or production"
 }
 
 variable "notification_channels" {
-  type = list(string)
+  type        = list(string)
+  description = "List of notification channels available"
 }
 
 variable "availability" {
@@ -28,5 +30,6 @@ variable "availability" {
 }
 
 variable "latency" {
-  type = map(any)
+  type        = map(any)
+  description = "Latency"
 }

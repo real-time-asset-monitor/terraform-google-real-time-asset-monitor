@@ -18,10 +18,6 @@ locals {
   service_name = "splitexport"
 }
 
-data "google_project" "project" {
-  project_id = var.project_id
-}
-
 data "google_storage_project_service_account" "gcs_account" {
   project = var.project_id
 }
@@ -87,8 +83,8 @@ resource "google_cloud_run_v2_service" "crun_svc" {
       resources {
         cpu_idle = true
         limits = {
-          cpu    = "${var.crun_cpu}"
-          memory = "${var.crun_memory}"
+          cpu    = var.crun_cpu
+          memory = var.crun_memory
         }
       }
       env {

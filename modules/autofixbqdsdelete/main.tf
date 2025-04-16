@@ -17,12 +17,8 @@
 locals {
   service_name = "autofix"
   action_kind  = "bqdsdelete"
-  rule_name    = "GCPBigQueryDatasetLocationConstraintV1"
 }
 
-data "google_project" "project" {
-  project_id = var.project_id
-}
 
 resource "google_service_account" "microservice_sa" {
   project      = var.project_id
@@ -53,8 +49,8 @@ resource "google_cloud_run_v2_service" "crun_svc" {
       resources {
         cpu_idle = true
         limits = {
-          cpu    = "${var.crun_cpu}"
-          memory = "${var.crun_memory}"
+          cpu    = var.crun_cpu
+          memory = var.crun_memory
         }
       }
       env {

@@ -61,22 +61,25 @@ variable "crun_timeout" {
 }
 
 variable "ram_container_images_registry" {
+  type        = string
   description = "artifact registry path"
   default     = "europe-docker.pkg.dev/brunore-ram-dev-100/realtime-asset-monitor"
 }
 
 variable "ram_microservice_image_tag" {
+  type        = string
   description = "The container image tag for this microservice"
   default     = "latest"
 }
 
 variable "log_only_severity_levels" {
+  type        = string
   description = "Which type of log entry should be logged"
   default     = "WARNING NOTICE CRITICAL"
 }
 
 variable "start_profiler" {
-  type        = bool
+  type        = string
   description = "Continuous CPU and heap profiling in Cloud Profiler"
   default     = "false"
 }

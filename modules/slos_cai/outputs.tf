@@ -16,23 +16,28 @@
 
 
 output "cai_custom_service_display_name" {
-  value = google_monitoring_custom_service.cai.display_name
+  value       = google_monitoring_custom_service.cai.display_name
+  description = "Custom service display name"
 }
 
 output "cai_custom_service_id" {
-  value = google_monitoring_custom_service.cai.id
+  value       = google_monitoring_custom_service.cai.id
+  description = "Custom service ID"
 }
 
 output "cai_monitoring_slo_latency" {
-  value = { for s in sort(keys(var.cai_latency)) : s => google_monitoring_slo.cai_latency[s].id }
+  value       = { for s in sort(keys(var.cai_latency)) : s => google_monitoring_slo.cai_latency[s].id }
+  description = "SLO latency"
 }
 
 output "cai_monitoring_slo_latency_fast_burn_alert" {
-  value = { for s in sort(keys(var.cai_latency)) : s => google_monitoring_alert_policy.cai_latency_fast_burn[s].id }
+  value       = { for s in sort(keys(var.cai_latency)) : s => google_monitoring_alert_policy.cai_latency_fast_burn[s].id }
+  description = "Latency fast burn alert"
 }
 
 output "cai_monitoring_slo_latency_slow_burn_alert" {
-  value = { for s in sort(keys(var.cai_latency)) : s => google_monitoring_alert_policy.cai_latency_slow_burn[s].id }
+  value       = { for s in sort(keys(var.cai_latency)) : s => google_monitoring_alert_policy.cai_latency_slow_burn[s].id }
+  description = "Latency slow burn alert"
 }
 
 # output "slo" {

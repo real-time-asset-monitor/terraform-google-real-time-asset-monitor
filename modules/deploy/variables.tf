@@ -15,5 +15,6 @@
  */
 
 variable "project_id" {
+  type        = string
   description = "GCP project id where to deploy RAM for a given environment like test or production"
 }

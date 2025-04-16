@@ -37,7 +37,8 @@ variable "violation_topic_name" {
 }
 
 variable "pubsub_allowed_regions" {
-  type = list(string)
+  type        = list(string)
+  description = "Pubsub Allowed regions"
 }
 
 variable "crun_region" {
@@ -81,6 +82,7 @@ variable "ram_container_images_registry" {
   default     = "europe-docker.pkg.dev/brunore-ram-dev-100/realtime-asset-monitor"
 }
 variable "ram_microservice_image_tag" {
+  type        = string
   description = "The container image tag for this microservice"
   default     = "latest"
 }
@@ -92,6 +94,7 @@ variable "log_only_severity_levels" {
 }
 
 variable "start_profiler" {
+  type        = string
   description = "Continuous CPU and heap profiling in Cloud Profiler"
   default     = "false"
 }

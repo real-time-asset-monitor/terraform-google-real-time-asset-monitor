@@ -15,27 +15,28 @@
  */
 
 variable "project_id" {
+  type        = string
   description = "RAM GCP project id for a given environment, like dev or production"
 }
 
 variable "region" {
+  type        = string
   description = "gcp region"
   default     = "europe-west1"
 }
 
 variable "dns_name" {
+  type        = string
   description = "The DNS name used to expose RAM e.g. ram.example.com"
 }
 
-variable "support_email" {
-  description = "iap brand support email"
-}
-
 variable "gcs_location" {
+  type        = string
   description = "Cloud Storage location"
   default     = "europe-west1"
 }
 
 variable "static_public_bucket_name_suffix" {
+  type        = string
   description = "suffix to the bucketname hosting public static content"
 }

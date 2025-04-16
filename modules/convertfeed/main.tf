@@ -116,8 +116,8 @@ resource "google_cloud_run_v2_service" "crun_svc" {
       resources {
         cpu_idle = true
         limits = {
-          cpu    = "${var.crun_cpu}"
-          memory = "${var.crun_memory}"
+          cpu    = var.crun_cpu
+          memory = var.crun_memory
         }
       }
       env {
@@ -142,7 +142,7 @@ resource "google_cloud_run_v2_service" "crun_svc" {
       }
       env {
         name  = "${upper(local.service_name)}_OWNER_LABEL_KEY_NAME"
-        value = var.owner_label_Key_name
+        value = var.owner_label_key_name
       }
       env {
         name  = "${upper(local.service_name)}_PROJECT_ID"

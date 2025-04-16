@@ -18,10 +18,6 @@ locals {
   service_name = "publish2fs"
 }
 
-data "google_project" "project" {
-  project_id = var.project_id
-}
-
 resource "google_service_account" "microservice_sa" {
   project      = var.project_id
   account_id   = local.service_name
@@ -57,8 +53,8 @@ resource "google_cloud_run_v2_service" "crun_svc" {
       resources {
         cpu_idle = true
         limits = {
-          cpu    = "${var.crun_cpu}"
-          memory = "${var.crun_memory}"
+          cpu    = var.crun_cpu
+          memory = var.crun_memory
         }
       }
       env {

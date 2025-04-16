@@ -20,20 +20,24 @@ output "external_ip_address" {
 }
 
 output "audience_admin" {
-  value = "/projects/${data.google_project.project.number}/global/backendServices/${google_compute_backend_service.admin.generated_id}"
+  value       = "/projects/${data.google_project.project.number}/global/backendServices/${google_compute_backend_service.admin.generated_id}"
+  description = "Audience admin"
 }
 
 output "audience_results" {
-  value = "/projects/${data.google_project.project.number}/global/backendServices/${google_compute_backend_service.results.generated_id}"
+  value       = "/projects/${data.google_project.project.number}/global/backendServices/${google_compute_backend_service.results.generated_id}"
+  description = "Audience results"
 }
 
 
 output "admin_backend_name" {
-  value = google_compute_backend_service.admin.name
+  value       = google_compute_backend_service.admin.name
+  description = "Admin backend name"
 }
 
 output "results_backend_name" {
-  value = google_compute_backend_service.results.name
+  value       = google_compute_backend_service.results.name
+  description = "Results backend name"
 }
 
 # output "urlmap" {

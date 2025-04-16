@@ -31,7 +31,8 @@ variable "asset_rule_topic_name" {
 }
 
 variable "pubsub_allowed_regions" {
-  type = list(string)
+  type        = list(string)
+  description = "Pubsub allowed regions"
 }
 
 variable "gcs_location" {

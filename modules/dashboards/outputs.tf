@@ -15,25 +15,31 @@
  */
 
 output "ram_main_microservices" {
-  value = google_monitoring_dashboard.ram_main_microservices.id
+  value       = google_monitoring_dashboard.ram_main_microservices.id
+  description = "Main microservices"
 }
 
 output "ram_gcpexport_microservices" {
-  value = google_monitoring_dashboard.ram_gcpexport_microservices.id
+  value       = google_monitoring_dashboard.ram_gcpexport_microservices.id
+  description = "Gcp export microservices"
 }
 
 output "ram_errors_in_log_entries" {
-  value = google_monitoring_dashboard.ram_errors_in_log_entries.id
+  value       = google_monitoring_dashboard.ram_errors_in_log_entries.id
+  description = "Errors in log entries"
 }
 
 output "ram_daily_counts_top3_cost_drivers" {
-  value = google_monitoring_dashboard.ram_daily_counts_top3_cost_drivers.id
+  value       = google_monitoring_dashboard.ram_daily_counts_top3_cost_drivers.id
+  description = "Daily top 3 cost drivers"
 }
 
 output "ram_core_microservices_latency" {
-  value = google_monitoring_dashboard.ram_core_microservices_latency.id
+  value       = google_monitoring_dashboard.ram_core_microservices_latency.id
+  description = "Core microservices latency"
 }
 
 output "consumed_api_request_count" {
-  value = google_monitoring_dashboard.consumed_api_request_count.id
+  value       = google_monitoring_dashboard.consumed_api_request_count.id
+  description = "Consumed request count"
 }

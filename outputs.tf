@@ -69,45 +69,56 @@ output "monitor" {
 }
 
 output "publish2fs" {
-  value = module.publish2fs
+  value       = module.publish2fs
+  description = "Module publish2fs"
 }
 
 output "slos" {
-  value = module.slos
+  value       = module.slos
+  description = "slos"
 }
 
 output "slos_cai" {
-  value = module.slos_cai
+  value       = module.slos_cai
+  description = "slos cai"
 }
 
 output "splitexport" {
-  value = module.splitexport
+  value       = module.splitexport
+  description = "RAM split export"
 }
 
 output "stream2bq" {
-  value = module.stream2bq
+  value       = module.stream2bq
+  description = "Stream2bq module"
 }
 
 output "transparentslis" {
-  value = module.transparentslis
+  value       = module.transparentslis
+  description = "Transparentslis module"
 }
 
 output "upload2gcs" {
-  value = module.upload2gcs
+  value       = module.upload2gcs
+  description = "upload2gcs module"
 }
 
 output "autofixbqdsdelete" {
-  value = module.autofixbqdsdelete
+  value       = module.autofixbqdsdelete
+  description = "autofixbqdsdelete module"
 }
 
 output "console" {
-  value = module.console
+  value       = module.console
+  description = "console module"
 }
 
 output "consolebff" {
-  value = module.consolebff
+  value       = module.consolebff
+  description = "consolebff module"
 }
 
 output "loadbalancer" {
-  value = module.loadbalancer
+  value       = module.loadbalancer
+  description = "loadbalancer module"
 }

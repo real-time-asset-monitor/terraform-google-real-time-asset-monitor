@@ -58,6 +58,7 @@ variable "feed_resource_folders" {
 }
 
 variable "log_only_severity_levels" {
+  type        = string
   description = "Which type of log entry should be logged"
   default     = "WARNING NOTICE CRITICAL"
 }
@@ -116,9 +117,11 @@ variable "schedulers" {
       "schedule"    = "0 */3 * * *",
     },
   }
+  description = "RAM scheduler"
 }
 
 variable "notification_channels" {
-  type    = list(string)
-  default = []
+  type        = list(string)
+  default     = []
+  description = "List of notification channels available"
 }

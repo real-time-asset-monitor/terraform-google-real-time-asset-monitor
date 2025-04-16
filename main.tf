@@ -234,7 +234,6 @@ module "loadbalancer" {
   project_id                       = var.project_id
   region                           = var.crun_region
   dns_name                         = var.dns_name
-  support_email                    = var.support_email
   static_public_bucket_name_suffix = var.static_public_bucket_name_suffix
 }
 

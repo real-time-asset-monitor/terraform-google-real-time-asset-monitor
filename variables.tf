@@ -16,27 +16,32 @@
 
 
 variable "project_id" {
+  type        = string
   description = "GCP project id where to deploy RAM for a given environment, like test or production"
 }
 
 variable "environment" {
+  type        = string
   description = "environment name, by default terraform.workspace is used"
   default     = ""
 }
 
 variable "ram_microservice_image_tag" {
+  type        = string
   description = "The container image tag for this microservice"
   default     = "latest"
 }
 
 variable "log_only_severity_levels" {
+  type        = string
   description = "Which type of log entry should be logged"
   default     = "WARNING NOTICE CRITICAL"
 }
 
 variable "pubsub_allowed_regions" {
-  type    = list(string)
-  default = ["europe-central2", "europe-north1", "europe-west1", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "europe-southwest1"]
+  type        = list(string)
+  default     = ["europe-central2", "europe-north1", "europe-west1", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "europe-southwest1"]
+  description = "Allowed regions for pubsub"
 }
 
 variable "gcs_location" {
@@ -63,11 +68,6 @@ variable "crun_region" {
   default     = "europe-west1"
 }
 
-variable "dataset_location" {
-  description = "Bigquery dataset location"
-  type        = string
-  default     = "EU"
-}
 
 variable "scheduler_region" {
   description = "Cloud Scheduler region"
@@ -111,6 +111,7 @@ variable "schedulers" {
       "schedule"    = "0 */3 * * *",
     },
   }
+  description = "RAM schedulers"
 }
 
 variable "export_org_ids" {
@@ -147,32 +148,10 @@ variable "feed_resource_folders" {
   default     = {}
 }
 
-variable "asset_feed_topic_name" {
-  description = "the data on which to assess compliance"
-  default     = "assetFeed"
-}
-
-variable "asset_rule_topic_name" {
-  description = "each message combines the data of one asset and the code of one complicance rule's"
-  type        = string
-  default     = "assetRule"
-}
-
-variable "compliance_status_topic_name" {
-  description = "compliance status may be true for compliant or false for not compliant for a given asset version and configuration rule version"
-  type        = string
-  default     = "ram-complianceStatus"
-}
-
-variable "violation_topic_name" {
-  description = "violations detail why an asset is not compliant to a configuration rule"
-  type        = string
-  default     = "ram-violation"
-}
-
 variable "notification_channels" {
-  type    = list(string)
-  default = []
+  type        = list(string)
+  default     = []
+  description = "List of notification channels available"
 }
 
 variable "ram_e2e_latency" {
@@ -218,6 +197,7 @@ variable "ram_e2e_latency" {
       alerting_slow_burn_threshold       = 2
     }
   }
+  description = "e2e latency"
 }
 
 variable "cai_latency" {
@@ -252,6 +232,7 @@ variable "cai_latency" {
       alerting_slow_burn_threshold       = 2
     }
   }
+  description = "RAM cai latency"
 }
 
 variable "api_availability" {
@@ -292,7 +273,8 @@ variable "api_availability" {
 }
 
 variable "api_latency" {
-  type = map(any)
+  type        = map(any)
+  description = "RAM API latency"
   default = {
     pubsub_publish = {
       rolling_period_days                = 28
@@ -352,16 +334,14 @@ variable "deploy_loadbalancer" {
 }
 
 variable "dns_name" {
+  type        = string
   description = "The DNS name used to expose RAM"
   default     = "ram.example.com"
 }
 
-variable "support_email" {
-  description = "iap brand support email"
-  default     = "support@example.com"
-}
 
 variable "static_public_bucket_name_suffix" {
+  type        = string
   description = "suffix to the bucketname hosting public static content"
   default     = "-staticpublicweb"
 }
