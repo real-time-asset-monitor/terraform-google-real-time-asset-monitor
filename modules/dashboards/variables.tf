@@ -21,5 +21,5 @@ variable "project_id" {
 
 variable "log_metric_ram_execution_latency_id" {
   type        = string
-  description = "RAM execution latency ud"
+  description = "RAM execution latency ID"
 }
