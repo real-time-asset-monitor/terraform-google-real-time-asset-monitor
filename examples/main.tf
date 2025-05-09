@@ -22,9 +22,8 @@ terraform {
   }
 }
 
-module "realtime-asset-monitor" {
-  source                  = "BrunoReboul/realtime-asset-monitor/google"
-  version                 = "<x.y.z>"
+module "real-time-asset-monitor" {
+  source                    = "real-time-asset-monitor/real-time-asset-monitor/google"
   project_id                = terraform.workspace == "prod" ? var.prod_project_id : var.test_project_id
   export_org_ids            = var.export_org_ids
   export_folder_ids         = var.export_folder_ids

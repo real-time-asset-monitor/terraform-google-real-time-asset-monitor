@@ -15,8 +15,11 @@
  */
 
 variable "project_id" {
+  type        = string
   description = "RAM GCP project id for a given environment, like dev or production"
 }
 
 variable "log_metric_ram_execution_latency_id" {
+  type        = string
+  description = "RAM execution latency ID"
 }

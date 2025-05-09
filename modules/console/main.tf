@@ -39,42 +39,42 @@ resource "google_cloud_run_v2_service" "crun_svc" {
   project  = var.project_id
   name     = local.service_name
   location = var.crun_region
-  client = "terraform"
-  ingress = "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
+  client   = "terraform"
+  ingress  = "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
   traffic {
-    type = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+    type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
     percent = 100
   }
   template {
     containers {
-        image = "${var.ram_container_images_registry}/${local.service_name}:${var.ram_microservice_image_tag}"
-        resources {
-          cpu_idle = true
-          limits = {
-            cpu    = "${var.crun_cpu}"
-            memory = "${var.crun_memory}"
-          }
+      image = "${var.ram_container_images_registry}/${local.service_name}:${var.ram_microservice_image_tag}"
+      resources {
+        cpu_idle = true
+        limits = {
+          cpu    = var.crun_cpu
+          memory = var.crun_memory
         }
-        env {
-          name  = "BFF_BASE_URL"
-          value = "https://${var.dns_name}"
-        }
-        env {
-          name  = "BFF_CONNECT_TIMEOUT_MS"
-          value = var.bff_connect_timeout_ms
-        }
-        env {
-          name  = "BFF_RECEIVE_TIMEOUT_MS"
-          value = var.bff_receive_timeout_ms
-        }
-        env {
-          name  = "BASE_HREF"
-          value = "/${local.service_name}/"
-        }
+      }
+      env {
+        name  = "BFF_BASE_URL"
+        value = "https://${var.dns_name}"
+      }
+      env {
+        name  = "BFF_CONNECT_TIMEOUT_MS"
+        value = var.bff_connect_timeout_ms
+      }
+      env {
+        name  = "BFF_RECEIVE_TIMEOUT_MS"
+        value = var.bff_receive_timeout_ms
+      }
+      env {
+        name  = "BASE_HREF"
+        value = "/${local.service_name}/"
+      }
     }
     max_instance_request_concurrency = var.crun_concurrency
-    timeout = var.crun_timeout
-    service_account = google_service_account.microservice_sa.email
+    timeout                          = var.crun_timeout
+    service_account                  = google_service_account.microservice_sa.email
     scaling {
       max_instance_count = var.crun_max_instances
     }
@@ -100,4 +100,3 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
 
   policy_data = data.google_iam_policy.binding.policy_data
 }
-

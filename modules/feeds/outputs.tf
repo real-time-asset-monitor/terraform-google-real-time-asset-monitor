@@ -33,5 +33,3 @@ output "feed_resource_folder" {
   description = "cai feed for resource at folders level"
   value       = google_cloud_asset_folder_feed.feed_resource_folder
 }
-
-

@@ -20,23 +20,28 @@ output "project_id" {
 }
 
 output "convertfeed" {
-  value = module.convertfeed
+  value       = module.convertfeed
+  description = "convertfeed module"
 }
 
 output "dashboards" {
-  value = module.dashboards
+  value       = module.dashboards
+  description = "dashboards module"
 }
 
 output "deploy" {
-  value = module.deploy
+  value       = module.deploy
+  description = "deploy"
 }
 
 output "executecaiexport" {
-  value = module.executecaiexport
+  value       = module.executecaiexport
+  description = "executecaiexport"
 }
 
 output "executegfsdeleteolddocs" {
-  value = module.executegfsdeleteolddocs
+  value       = module.executegfsdeleteolddocs
+  description = "executegfsdeleteolddocs"
 }
 
 # output "feeds" {
@@ -44,61 +49,76 @@ output "executegfsdeleteolddocs" {
 # }
 
 output "fetchrules" {
-  value = module.fetchrules
+  value       = module.fetchrules
+  description = "fetchrules"
 }
 
 output "launch" {
-  value = module.launch
+  value       = module.launch
+  description = "launch"
 }
 
 output "metrics" {
-  value = module.metrics
+  value       = module.metrics
+  description = "metrics"
 }
 
 output "monitor" {
-  value = module.monitor
+  value       = module.monitor
+  description = "monitor"
 }
 
 output "publish2fs" {
-  value = module.publish2fs
+  value       = module.publish2fs
+  description = "Module publish2fs"
 }
 
 output "slos" {
-  value = module.slos
+  value       = module.slos
+  description = "slos"
 }
 
 output "slos_cai" {
-  value = module.slos_cai
+  value       = module.slos_cai
+  description = "slos cai"
 }
 
 output "splitexport" {
-  value = module.splitexport
+  value       = module.splitexport
+  description = "RAM split export"
 }
 
 output "stream2bq" {
-  value = module.stream2bq
+  value       = module.stream2bq
+  description = "Stream2bq module"
 }
 
 output "transparentslis" {
-  value = module.transparentslis
+  value       = module.transparentslis
+  description = "Transparentslis module"
 }
 
 output "upload2gcs" {
-  value = module.upload2gcs
+  value       = module.upload2gcs
+  description = "upload2gcs module"
 }
 
 output "autofixbqdsdelete" {
-  value = module.autofixbqdsdelete
+  value       = module.autofixbqdsdelete
+  description = "autofixbqdsdelete module"
 }
 
 output "console" {
-  value = module.console
+  value       = module.console
+  description = "console module"
 }
 
 output "consolebff" {
-  value = module.consolebff
+  value       = module.consolebff
+  description = "consolebff module"
 }
 
 output "loadbalancer" {
-  value = module.loadbalancer
+  value       = module.loadbalancer
+  description = "loadbalancer module"
 }

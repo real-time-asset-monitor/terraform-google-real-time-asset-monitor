@@ -1,0 +1,76 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: cef0300fd0fc4d2a87a85fa2093c6b283ea36f4b  # frozen: v5.0.0
+    hooks:
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+        args: [--fix, lf]
+      - id: check-added-large-files
+      - id: check-yaml
+      - id: forbid-new-submodules
+      - id: no-commit-to-branch
+      - id: check-json
+      - id: pretty-format-json
+        args: [--autofix]
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: d9addbeb3614a69d4f96a60d3a090bfddfbb1596  # frozen: v1.88.4
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+        args:
+          - --hook-config=--retry-once-with-cleanup=true
+        exclude: examples
+      - id: terraform_providers_lock
+        args:
+          - --hook-config=--mode=only-check-is-current-lockfile-cross-platform
+          - --args=-platform=linux_amd64
+          - --args=-platform=linux_arm64
+          - --args=-platform=darwin_amd64
+          - --args=-platform=darwin_arm64
+      - id: terraform_tflint
+        args:
+          - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
+        exclude: examples
+      - id: terraform_docs
+
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 00812cd1850e41aae5c0916645b4b7404f538e8c  # frozen: 0.7.19
+    hooks:
+      - id: mdformat
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-tables
+          - mdformat-toc
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: 81e9f98ffd059efe8aa9c1b1a42e5cce61b640c6  # frozen: v1.35.1
+    hooks:
+      - id: yamllint
+
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 38980559e3a605691d6579f96222c30778e5a69e   # frozen: 3.0.0
+    hooks:
+      - id: script-must-have-extension
+      - id: shellcheck
+      - id: shfmt
+
+  - repo: https://github.com/hukkin/mdformat
+    rev: e20b1ac5acb8aba0b49d3a9109c6e6b58684ee83  # frozen: 0.7.21
+    hooks:
+      - id: mdformat
+        # needed to support exclude in `.mdformat.toml`
+        # pre-commit runs on python 3.12 by default on MacOS
+        # and most linux distributions.
+        # Install python 3.13 if pre-commit fails.
+        language_version: "3.13"
+        # Optionally add plugins
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-gfm-alerts
+          - mdformat-shfmt
+          - mdformat-toc
+          - mdformat-tables

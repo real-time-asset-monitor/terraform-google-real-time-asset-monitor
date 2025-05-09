@@ -19,11 +19,6 @@ output "service_account_email" {
   value       = google_service_account.microservice_sa.email
 }
 
-output "exports_bucket_name" {
-  description = "Cloud storage bucket where to output Cloud Asset Inventory exports"
-  value       = google_storage_bucket.exports.name
-}
-
 output "crun_service_id" {
   description = "cloud run service id"
   value       = google_cloud_run_v2_service.crun_svc.id
@@ -40,4 +35,3 @@ output "subscription_id" {
   description = "PubSub subscription id to trigger this type of action"
   value       = google_pubsub_subscription.subcription.id
 }
-

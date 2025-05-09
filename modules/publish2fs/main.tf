@@ -18,10 +18,6 @@ locals {
   service_name = "publish2fs"
 }
 
-data "google_project" "project" {
-  project_id = var.project_id
-}
-
 resource "google_service_account" "microservice_sa" {
   project      = var.project_id
   account_id   = local.service_name
@@ -45,46 +41,46 @@ resource "google_cloud_run_v2_service" "crun_svc" {
   project  = var.project_id
   name     = local.service_name
   location = var.crun_region
-  client = "terraform"
-  ingress = "INGRESS_TRAFFIC_INTERNAL_ONLY"
+  client   = "terraform"
+  ingress  = "INGRESS_TRAFFIC_INTERNAL_ONLY"
   traffic {
-    type = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+    type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
     percent = 100
   }
   template {
     containers {
-        image = "${var.ram_container_images_registry}/${local.service_name}:${var.ram_microservice_image_tag}"
-        resources {
-          cpu_idle = true
-          limits = {
-            cpu    = "${var.crun_cpu}"
-            memory = "${var.crun_memory}"
-          }
+      image = "${var.ram_container_images_registry}/${local.service_name}:${var.ram_microservice_image_tag}"
+      resources {
+        cpu_idle = true
+        limits = {
+          cpu    = var.crun_cpu
+          memory = var.crun_memory
         }
-        env {
-          name  = "${upper(local.service_name)}_ASSET_COLLECTION_ID"
-          value = var.asset_collection_id
-        }
-        env {
-          name  = "${upper(local.service_name)}_ENVIRONMENT"
-          value = var.environment
-        }
-        env {
-          name  = "${upper(local.service_name)}_LOG_ONLY_SEVERITY_LEVELS"
-          value = var.log_only_severity_levels
-        }
-        env {
-          name  = "${upper(local.service_name)}_PROJECT_ID"
-          value = var.project_id
-        }
-        env {
-          name  = "${upper(local.service_name)}_START_PROFILER"
-          value = var.start_profiler
-        }
+      }
+      env {
+        name  = "${upper(local.service_name)}_ASSET_COLLECTION_ID"
+        value = var.asset_collection_id
+      }
+      env {
+        name  = "${upper(local.service_name)}_ENVIRONMENT"
+        value = var.environment
+      }
+      env {
+        name  = "${upper(local.service_name)}_LOG_ONLY_SEVERITY_LEVELS"
+        value = var.log_only_severity_levels
+      }
+      env {
+        name  = "${upper(local.service_name)}_PROJECT_ID"
+        value = var.project_id
+      }
+      env {
+        name  = "${upper(local.service_name)}_START_PROFILER"
+        value = var.start_profiler
+      }
     }
     max_instance_request_concurrency = var.crun_concurrency
-    timeout = var.crun_timeout
-    service_account = google_service_account.microservice_sa.email
+    timeout                          = var.crun_timeout
+    service_account                  = google_service_account.microservice_sa.email
     scaling {
       max_instance_count = var.crun_max_instances
     }
@@ -138,13 +134,13 @@ resource "google_pubsub_subscription" "subcription" {
 }
 
 module "gcloud" {
-  count = var.deploy_fs_assets_retention_policy == true ? 1 : 0
+  count   = var.deploy_fs_assets_retention_policy == true ? 1 : 0
   source  = "terraform-google-modules/gcloud/google"
   version = "~> 3.4"
 
-  platform = "linux"
+  platform              = "linux"
   additional_components = ["beta"]
 
-  create_cmd_entrypoint  = "gcloud"
-  create_cmd_body        = "firestore fields ttls update expireAt --collection-group=${var.asset_collection_id} --enable-ttl --project=${var.project_id}"
+  create_cmd_entrypoint = "gcloud"
+  create_cmd_body       = "firestore fields ttls update expireAt --collection-group=${var.asset_collection_id} --enable-ttl --project=${var.project_id}"
 }

@@ -2,9 +2,10 @@
 
 ## Prerequisites
 
-To use theses terraform modules, you will need a GCP project with:  
+To use theses terraform modules, you will need a GCP project with:
 
 - APIs enabled
+
   - Artifact Registry API `artifactregistry.googleapis.com`
   - BigQuery API `bigquery.googleapis.com` (default)
   - Cloud Asset API `cloudasset.googleapis.com`
@@ -22,6 +23,7 @@ To use theses terraform modules, you will need a GCP project with:
   - Stackdriver Profiler API `cloudprofiler.googleapis.com` (default)
 
 - IAM roles for the service account used to run Terraform:
+
   - On the project or folder hosting RAM
     - Project IAM Admin `roles/resourcemanager.projectIamAdmin`
     - Pub/sub Admin `roles/pubsub.admin`
@@ -65,7 +67,9 @@ To use theses terraform modules, you will need a GCP project with:
     - Tag Administrator `roles/resourcemanager.tagAdmin`
 
 - FireStore: [select native mode](https://cloud.google.com/datastore/docs/firestore-or-datastore)
+
 - Provision a GCS bucket to manage Terraform state.
+
 - Install Terraform and google provider consistent with version specifyied in `versions.tf`
 
 ## Example
